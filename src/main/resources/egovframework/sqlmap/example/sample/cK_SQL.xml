@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ckeditor">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias alias="ckVO" type="egovframework.vo.ckVO"/>
+	
+	
+	<resultMap id="ck" class="egovframework.vo.ckVO">
+		<result property="no" column="no" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+	</resultMap>
+	
+	
+	<insert id="ckInsert">
+		insert into ckeditor (no,title,content) values (ck_seq.nextval,#title#,#content#)
+	</insert>
+	
+	<select id="ckSelectAll" parameterClass="ckVO"
+		resultClass="egovMap">
+		select * from ckeditor
+	</select>
+	
+	<select id="ckGetContnet" resultMap="ck">
+		select * from ckeditor where no = #no#
+	</select>
+	
+	<update id="ckEdit">
+		update ckeditor set title=#title#, content=#content# where no = #no#
+	</update>
+		
+</sqlMap>
