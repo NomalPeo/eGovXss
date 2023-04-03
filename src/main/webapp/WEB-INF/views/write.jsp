@@ -18,7 +18,7 @@
 	</form>
 	<script>
 		CKEDITOR.replace('editor4',{
-			filebrowserUploadUrl:"fileupload.do"
+			filebrowserUploadUrl:"/main/fileuploads.do"
 			});
 	</script>
 </body>
